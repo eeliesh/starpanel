@@ -1,0 +1,64 @@
+// import font from url
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
+// fonts
+$fontFamily: 'Titillium Web', sans-serif;
+
+// font sizes
+$fontSizeSmall: 13px;
+$fontSizeMedium: 15px;
+$fontSizeLarge: 17px;
+
+// default colors
+$white: #fff;
+$blue: #007bff;
+$cyan: #17a2b8;
+$green: #28a745;
+$red: #dc3545;
+$orange: #ffc107;
+
+// custom colors
+$primaryColor: #4da1fe;
+$textColor: #b5b5e0;
+$placeholderColor: #7e7e99;
+$menuIconColor: #56569b;
+
+// backgrounds
+$primaryBackground: #1f1f31;
+$secondaryBackground: #26263e;
+$inputBackground: #313150;
+
+// widths
+$sidebarWidth: 270px;
+$avatarExtraSmall: 30px;
+$avatarSmall: 50px;
+$avatarMedium: 100px;
+$avatarLarge: 125px;
+$avatarExtraLarge: 150px;
+
+// paddings
+$paddingSmall: 15px;
+$paddingMedium: 20px;
+$paddingLarge: 25px;
+$paddingExtraLarge: 30px;
+$inputPadding: 7px 12px;
+
+// border radius
+$borderRadius: 5px;
+
+// transitions
+$transition: all 0.3s ease-in-out;
+
+// box shadow
+$boxShadow: 0 5px 10px 0px rgb(0 0 0 / 10%);
+
+// gradients
+$primaryGradient: to left, #21d4fd, #b721ff, #21d4fd, #b721ff;
+$successGradient: to left, #05E8BA, #087EE1, #05E8BA, #087EE1;
+$dangerGradient: to left, #F45C43, #EB3349, #F45C43, #EB3349;
+$warningGradient: to left, #FFC837, #FF8008, #FFC837, #FF8008;
+
+$primaryGradientLeft: to right, #21d4fd, #b721ff;
+
+// other
+$gridGap: 20px;
