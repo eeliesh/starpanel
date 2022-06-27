@@ -11,7 +11,7 @@
         </a>
     </div>
     <div class="table-wrapper">
-        <table class="table">
+        <table class="table" id="table">
             <thead>
                 <th>Name</th>
                 <th>Auth</th>

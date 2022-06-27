@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\User;
+use App\Models\Rank;
 
 // check if logged in
 function isLoggedIn()
@@ -9,13 +11,16 @@ function isLoggedIn()
 }
 
 // check if admin
-function isAdmin()
+function isAdmin($id = 0)
 {
     if (!isLoggedIn())
         return false;
 
-    $user = Admin::where('user_id', auth()->id())->first();
-    return $user ? true : false;
+    if ($id == 0) {
+        return Admin::where('user_id', auth()->id())->first() ? true : false;
+    }
+
+    return Admin::where('user_id', $id)->first() ? true : false;
 }
 
 // get admin permissions
@@ -100,4 +105,26 @@ function storage($url)
 function customTime($seconds)
 {
     return gmdate('H', $seconds) . 'h ' . gmdate('i', $seconds) . 'm';
+}
+
+// get rank name
+function getRank($access)
+{
+    $rank = Rank::where('access_flags', $access)->first();
+
+    if (!$rank)
+        return 'Unknown';
+    
+    return $rank->name;
+}
+
+// get user id by name
+function getIdByName($name)
+{
+    $user = User::select('id')->where('name', $name)->first();
+
+    if (!$user)
+        return 0;
+    
+    return $user->id;
 }

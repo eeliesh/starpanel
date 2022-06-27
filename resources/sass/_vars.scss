@@ -54,12 +54,12 @@ $transition: all 0.3s ease-in-out;
 $boxShadow: 0 5px 10px 0px rgb(0 0 0 / 10%);
 
 // gradients
-$primaryGradient: to left, #21d4fd, #b721ff, #21d4fd, #b721ff;
-$successGradient: to left, #05E8BA, #087EE1, #05E8BA, #087EE1;
-$dangerGradient: to left, #F45C43, #EB3349, #F45C43, #EB3349;
-$warningGradient: to left, #FFC837, #FF8008, #FFC837, #FF8008;
+$primaryGradient: 200deg, #21d4fd, #b721ff, #21d4fd, #b721ff;
+$successGradient: 200deg, #05E8BA, #087EE1, #05E8BA, #087EE1;
+$dangerGradient: 200deg, #F45C43, #EB3349, #F45C43, #EB3349;
+$warningGradient: 200deg, #FFC837, #FF8008, #FFC837, #FF8008;
 
-$primaryGradientLeft: to right, #21d4fd, #b721ff;
+$primaryGradientLeft: 360deg, #21d4fd, #b721ff;
 
 // other
 $gridGap: 20px;

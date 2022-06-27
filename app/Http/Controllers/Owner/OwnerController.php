@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\App;
 
 use App\Models\User;
 use App\Models\Admin;
@@ -37,6 +39,24 @@ class OwnerController extends Controller
             'total_admins' => Admin::count(),
             'online_players' => count($players),
             'banned_players' => $banned_players
+        ]);
+    }
+
+    public function maintenance()
+    {
+        $message = '';
+
+        if (App::isDownForMaintenance()) {
+            $message = 'The application is now live.';
+            Artisan::call('up');
+        } else {
+            $message = 'The application is now down for maintenance.';
+            Artisan::call('down --secret="ACTIVATEGODM0D3"');
+        }
+
+        return redirect(route('owner.index'))->with([
+            'message' => $message,
+            'message-type' => 'success'
         ]);
     }
 }

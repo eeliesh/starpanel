@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+use App\Models\User;
+use App\Models\Admin;
 
 class RegisterController extends Controller
 {
@@ -57,11 +59,18 @@ class RegisterController extends Controller
 
         $validator->after(function ($validator) {
             $user = User::where('name', $validator->getData()['name'])->first();
+            $admin = Admin::where('auth', $validator->getData()['name'])->first();
+
             if (!empty($user->email)) {
                 $validator->errors()->add('name', 'Account  is already registered.');
             }
             if ($user->last_ip != request()->ip()) {
                 $validator->errors()->add('name', 'You must login from the same IP address in-game.');
+            }
+            if ($admin) {
+                if ($validator->getData()['password'] != $admin['password']) {
+                    $validator->errors()->add('password', 'You must indicate your admin password.');
+                }
             }
         });
 

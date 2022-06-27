@@ -11,7 +11,7 @@
 
     <!-- CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css?v=' . config('app.css_version')) }}">
 </head>
 <body class="body">
     @if (session()->has('message'))
@@ -40,6 +40,12 @@
         <footer class="footer">
             <div class="copyright">
                 <p>
+                    Panel version: {{ config('app.app_version') }}
+                </p>
+                <p>
+                    Based on Laravel Framework {{ app()->version() }}
+                </p>
+                <p>
                     Developed with a lot of
                     <span class="material-icons red">favorite</span>
                     and
@@ -55,6 +61,6 @@
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js?v=' . config('app.css_version')) }}"></script>
 </body>
 </html>

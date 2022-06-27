@@ -10,6 +10,16 @@
                 @csrf
 
                 <div class="form-row">
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                    <span class="focus-input" data-placeholder="Username"></span>
+                    @error('name')
+                        <span class="invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-row">
                     <input type="text" name="auth" class="form-control" value="{{ old('auth') }}">
                     <span class="focus-input" data-placeholder="Auth"></span>
                     @error('auth')

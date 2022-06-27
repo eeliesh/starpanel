@@ -218,4 +218,8 @@ return [
     'cs_server_port' => env('CS_SERVER_PORT'),
     'cs_rcon_pass' => env('CS_RCON_PASS'),
 
+    'app_version' => env('APP_VERSION'),
+
+    'css_version' => env('CSS_VERSION'),
+
 ];

@@ -163,4 +163,14 @@ class UsersController extends Controller
             ]);
         }
     }
+
+    public function search(Request $request)
+    {
+        if (!$request->input('query') || !$request->input('_token'))
+            abort(404);
+
+        return view('users.search')->with([
+            'players' => User::where('name', 'LIKE', "%" . $request->input('query') . "%")->get()
+        ]);
+    }
 }

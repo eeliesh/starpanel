@@ -38,13 +38,13 @@ class OwnerAdminsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'auth' => 'required|exists:users,name|unique:admins',
-            'password' => 'required',
+            'name' => 'required|exists:users',
+            'auth' => 'required|unique:admins',
             'access' => 'required',
             'flags' => ['required', Rule::in(['a', 'ce', 'de'])]
         ]);
 
-        $user = User::select('id', 'name')->where('name', $request->input('auth'))->first();
+        $user = User::select('id', 'name')->where('name', $request->input('name'))->first();
 
         Admin::create([
             'auth' => $request->input('auth'),
@@ -83,20 +83,21 @@ class OwnerAdminsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'auth' => 'required|exists:users,name',
-            'password' => 'required',
+            'name' => 'required|exists:users',
+            'auth' => 'required',
             'access' => 'required',
             'flags' => ['required', Rule::in(['a', 'ce', 'de'])]
         ]);
+
+        $user = User::select('id', 'name')->where('name', $request->input('name'))->first();
 
         Admin::where('id', $id)->update([
             'auth' => $request->input('auth'),
             'password' => $request->input('password'),
             'access' => $request->input('access'),
+            'user_id' => $user->id,
             'flags' => $request->input('flags')
         ]);
-
-        $user = User::select('id', 'name')->where('id', $id)->first();
 
         StaffLog::create([
             'performer_id' => Auth::user()->id,

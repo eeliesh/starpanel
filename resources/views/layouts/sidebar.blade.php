@@ -36,7 +36,7 @@
                     <strong>{{ Auth::user()->name }}</strong>
                 </a>
             </div>
-            <div class="user-bar__controls">
+            <div class="user-bar__controls{{ isAdmin() ? ' admin' : '' }}">
                 <a href="{{ route('users.settings') }}" class="{{ str_contains(request()->url(), 'settings') ? 'active' : '' }}">
                     <span class="material-icons">manage_accounts</span>
                 </a>
@@ -45,6 +45,11 @@
                     aria-label="Logout">
                     <span class="material-icons">logout</span>
                 </a>
+                @if (canAddAdmins())
+                    <a href="{{ route('owner.index') }}" id="ownerButton">
+                        <span class="material-icons">lock</span>
+                    </a>
+                @endif
                 <a href="#" id="toggleMenu">
                     <span class="material-icons">menu</span>
                 </a>
@@ -58,7 +63,11 @@
 <div class="search">
     <div class="search__content">
         <div class="search__input">
-            <input type="text" placeholder="Search">
+            <form action="{{ route('users.search') }}" method="GET">
+                @csrf
+
+                <input type="text" name="query" placeholder="Search for a player">
+            </form>
         </div>
     </div>
 </div>

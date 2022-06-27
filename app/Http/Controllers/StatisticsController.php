@@ -41,7 +41,7 @@ class StatisticsController extends Controller
     public function top()
     {
         return view('stats.top')->with([
-            'players' => User::orderByRaw('kills / (deaths + 1) DESC')->take(15)->get(),
+            'players' => User::orderBy('headshots', 'DESC')->take(15)->get(),
         ]);
     }
 

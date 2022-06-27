@@ -76,15 +76,3 @@
         </div>
     </nav>
 @endif
-
-@if ($paginator->hasPages())
-    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between">
-        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div>
-                <span class="relative z-0 inline-flex shadow-sm rounded-md">
-                    
-                </span>
-            </div>
-        </div>
-    </nav>
-@endif

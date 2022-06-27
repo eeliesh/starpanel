@@ -174,8 +174,8 @@ h6 {
   width: 150px;
   height: 3px;
   background: #007bff;
-  background: linear-gradient(to right, #21d4fd, #b721ff);
-  background: -webkit-linear-gradient(to right, #21d4fd, #b721ff);
+  background: linear-gradient(360deg, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(360deg, #21d4fd, #b721ff);
   border-radius: 5px;
 }
 
@@ -382,7 +382,7 @@ h6 {
 }
 .layout .content {
   width: calc(100% - 270px);
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 100px);
   margin-left: 270px;
   padding: 30px;
   overflow-y: auto;
@@ -527,23 +527,23 @@ h6 {
 }
 .btn-group.primary .btn-bg {
   background: #a64bf4;
-  background: linear-gradient(to left, #21d4fd, #b721ff, #21d4fd, #b721ff);
-  background: -webkit-linear-gradient(to left, #21d4fd, #b721ff, #21d4fd, #b721ff);
+  background: linear-gradient(200deg, #21d4fd, #b721ff, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(200deg, #21d4fd, #b721ff, #21d4fd, #b721ff);
 }
 .btn-group.success .btn-bg {
   background: #28a745;
-  background: linear-gradient(to left, #05E8BA, #087EE1, #05E8BA, #087EE1);
-  background: -webkit-linear-gradient(to left, #05E8BA, #087EE1, #05E8BA, #087EE1);
+  background: linear-gradient(200deg, #05E8BA, #087EE1, #05E8BA, #087EE1);
+  background: -webkit-linear-gradient(200deg, #05E8BA, #087EE1, #05E8BA, #087EE1);
 }
 .btn-group.danger .btn-bg {
   background: #dc3545;
-  background: linear-gradient(to left, #F45C43, #EB3349, #F45C43, #EB3349);
-  background: -webkit-linear-gradient(to left, #F45C43, #EB3349, #F45C43, #EB3349);
+  background: linear-gradient(200deg, #F45C43, #EB3349, #F45C43, #EB3349);
+  background: -webkit-linear-gradient(200deg, #F45C43, #EB3349, #F45C43, #EB3349);
 }
 .btn-group.warning .btn-bg {
   background: #ffc107;
-  background: linear-gradient(to left, #FFC837, #FF8008, #FFC837, #FF8008);
-  background: -webkit-linear-gradient(to left, #FFC837, #FF8008, #FFC837, #FF8008);
+  background: linear-gradient(200deg, #FFC837, #FF8008, #FFC837, #FF8008);
+  background: -webkit-linear-gradient(200deg, #FFC837, #FF8008, #FFC837, #FF8008);
 }
 .btn-group .btn {
   font-size: 15px;
@@ -641,8 +641,8 @@ h6 {
   height: 2px;
   transition: all 0.4s;
   background: #6a7dfe;
-  background: linear-gradient(to right, #21d4fd, #b721ff);
-  background: -webkit-linear-gradient(to right, #21d4fd, #b721ff);
+  background: linear-gradient(360deg, #21d4fd, #b721ff);
+  background: -webkit-linear-gradient(360deg, #21d4fd, #b721ff);
 }
 .fancy-form .form-row .focus-input::after {
   font-size: 15px;
@@ -733,6 +733,16 @@ h6 {
   position: relative;
   overflow-x: scroll;
 }
+.table-wrapper .table-search {
+  margin: 15px 0;
+}
+.table-wrapper .table-search label {
+  margin-right: 5px;
+}
+
+.pagination + .table-wrapper .table-search {
+  margin: 0 0 15px 0;
+}
 
 .table {
   width: 100%;
@@ -744,12 +754,16 @@ h6 {
 .table thead th {
   background-color: #313150;
   color: #fff;
-  padding: 10px;
+  padding: 10px 15px;
   text-transform: uppercase;
+}
+.table thead th .material-icons {
+  font-size: 20px;
+  margin-left: 3px;
 }
 .table tbody td {
   background-color: #26263e;
-  padding: 5px 10px;
+  padding: 5px 15px;
 }
 
 .statistics .statistics__content .statistics__single {
@@ -1046,7 +1060,7 @@ pre {
   background-color: #313150;
   border-radius: 5px;
   padding: 5px 10px;
-  margin: 0 3px;
+  margin: 0 1px;
 }
 .pagination .pages span[aria-current=page],
 .pagination .pages a:hover {
@@ -1105,6 +1119,9 @@ pre {
   .layout .sidebar .user-bar .user-bar__content .user-bar__controls {
     grid-template-columns: 33% 33% 33%;
   }
+  .layout .sidebar .user-bar .user-bar__content .user-bar__controls.admin {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
   .layout .sidebar .user-bar .user-bar__content .user-bar__controls #toggleMenu {
     display: block;
   }
@@ -1122,5 +1139,9 @@ pre {
   }
   .block {
     margin: 15px 0;
+  }
+  .footer {
+    width: 100%;
+    margin-left: 0;
   }
 }

@@ -88,9 +88,9 @@
             <ul class="list-reset actions-panel clearfix">
                 <li class="actions-panel__item">
                     <span class="material-icons actions-panel__icon">toggle_off</span>
-                    <span class="actions-panel__text">Maintenance</span>
-                    <a href="#" class="actions-panel__execute">
-                        <span class="material-icons">done</span>
+                    <span class="actions-panel__text">Maintenance {{ \App::isDownForMaintenance() ? '(ON)' : '(OFF)' }}</span>
+                    <a href="{{ route('owner.maintenance') }}" class="actions-panel__execute">
+                        <span class="material-icons">{{ \App::isDownForMaintenance() ? 'close' : 'done' }}</span>
                     </a>
                 </li>
                 <li class="actions-panel__item clearfix">

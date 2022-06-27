@@ -6,7 +6,7 @@
     <h2 class="heading"><span class="material-icons">group</span> @yield('pageTitle')</h2>
     {{ $players->links() }}
     <div class="table-wrapper">
-        <table class="table">
+        <table class="table" id="table">
             <thead>
                 <tr>
                     <th>Name</th>

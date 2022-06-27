@@ -6,7 +6,7 @@
     <h2 class="heading"><span class="material-icons">group</span> @yield('pageTitle') {{ '(' . count($players) . ')' }}</h2>
     {{ $players->links() }}
     <div class="table-wrapper">
-        <table class="table">
+        <table class="table" id="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -23,6 +23,9 @@
                                 <a href="{{ route('users.profile', ['id' => $player['id']]) }}">
                                     {{ $player['name'] }}
                                 </a>
+                                @if (isAdmin($player['id']))
+                                    <span class="material-icons red" title="Admin">security</span>
+                                @endif
                             </td>
                             <td>{{ customTime($player['played_time']) }}</td>
                             <td>0</td>

@@ -421,7 +421,7 @@ h6 {
 
     .content {
         width: calc(100% - $sidebarWidth);
-        min-height: calc(100vh - 60px);
+        min-height: calc(100vh - 100px);
         margin-left: $sidebarWidth;
         padding: $paddingExtraLarge;
         overflow-y: auto;
@@ -879,6 +879,18 @@ h6 {
 .table-wrapper {
     position: relative;
     overflow-x: scroll;
+
+    .table-search {
+        margin: $paddingSmall 0;
+
+        label {
+            margin-right: 5px;
+        }
+    }
+}
+
+.pagination + .table-wrapper .table-search {
+    margin: 0 0 $paddingSmall 0;
 }
 
 .table {
@@ -891,15 +903,20 @@ h6 {
         th {
             background-color: $inputBackground;
             color: $white;
-            padding: 10px;
+            padding: 10px 15px;
             text-transform: uppercase;
+
+            .material-icons {
+                font-size: 20px;
+                margin-left: 3px;
+            }
         }
     }
 
     tbody {
         td {
             background-color: $secondaryBackground;
-            padding: 5px 10px;
+            padding: 5px 15px;
         }
     }
 }
@@ -1277,7 +1294,7 @@ pre {
             background-color: $inputBackground;
             border-radius: $borderRadius;
             padding: 5px 10px;
-            margin: 0 3px;
+            margin: 0 1px;
         }
 
         span[aria-current="page"],
@@ -1361,6 +1378,10 @@ pre {
                     .user-bar__controls {
                         grid-template-columns: 33% 33% 33%;
 
+                        &.admin {
+                            grid-template-columns: 25% 25% 25% 25%;
+                        }
+
                         #toggleMenu {
                             display: block;
                         }
@@ -1394,5 +1415,10 @@ pre {
 
     .block {
         margin: 15px 0;
+    }
+
+    .footer {
+        width: 100%;
+        margin-left: 0;
     }
 }

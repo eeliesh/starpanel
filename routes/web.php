@@ -32,7 +32,11 @@ Route::get('/bans', [StatisticsController::class, 'bans'])->name('stats.bans');
 
 Route::get('/staff', [AdminsController::class, 'staff'])->name('admins.staff');
 
-Route::get('/players', [UsersController::class, 'players'])->name('users.players');
+Route::prefix('players')->group(function () {
+    Route::get('/', [UsersController::class, 'players'])->name('users.players');
+    Route::get('/search', [UsersController::class, 'search'])->name('users.search');
+});
+
 Route::get('/profile/{id}', [UsersController::class, 'profile'])->name('users.profile');
 
 Route::prefix('settings')->middleware('auth')->group(function () {
@@ -66,6 +70,8 @@ Route::prefix('owner')->middleware('owner')->group(function () {
         Route::get('/', [RconController::class, 'index'])->name('owner.rcon.index');
         Route::post('/', [RconController::class, 'execute'])->name('owner.rcon.execute');
     });
+
+    Route::get('/maintenance', [OwnerController::class, 'maintenance'])->name('owner.maintenance');
 });
 
 Route::prefix('admin')->middleware('admin')->group(function () {
