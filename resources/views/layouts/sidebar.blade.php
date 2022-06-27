@@ -20,6 +20,9 @@
                 <a href="{{ route('register') }}" class="{{ request()->is('register') ? 'active' : '' }}">
                     <span class="material-icons">person_add</span>
                 </a>
+                <a href="#" id="toggleMenu">
+                    <span class="material-icons">menu</span>
+                </a>
             </div>
         @else
             <div class="user-bar__avatar">
@@ -41,6 +44,9 @@
                     onclick="event.preventDefault(); document.getElementById('logout-form-2').submit();"
                     aria-label="Logout">
                     <span class="material-icons">logout</span>
+                </a>
+                <a href="#" id="toggleMenu">
+                    <span class="material-icons">menu</span>
                 </a>
                 <form id="logout-form-2" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

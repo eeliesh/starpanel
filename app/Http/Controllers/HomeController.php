@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use xPaw\SourceQuery\SourceQuery;
 use Exception;
 
+use App\Models\StaffLog;
+
 class HomeController extends Controller
 {
     public function index()
@@ -31,6 +33,7 @@ class HomeController extends Controller
         return view('home.index')->with([
             'server_info' => $info,
             'server_ip' => config('app.cs_server_ip'),
+            'staff_logs' => StaffLog::orderBy('created_at', 'DESC')->take(10)->get(),
         ]);
     }
 }

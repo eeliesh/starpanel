@@ -135,6 +135,10 @@ h6 {
     float: left;
 }
 
+.d-none {
+    display: none;
+}
+
 // scrollbar
 ::-webkit-scrollbar {
     width: 5px;
@@ -225,12 +229,20 @@ h6 {
     margin-bottom: $paddingExtraLarge;
 }
 
+.inline-block {
+    display: inline-block;
+
+    .btn {
+        padding: 4px 7px !important;
+    }
+}
+
 // block
 .block {
     background-color: $secondaryBackground;
     border-radius: $borderRadius;
-    padding: $paddingMedium;
-    margin: $paddingSmall;
+    padding: $paddingExtraLarge;
+    margin: $paddingSmall $paddingExtraLarge $paddingSmall 0;
 
     &:last-child {
         margin-right: 0;
@@ -273,6 +285,10 @@ h6 {
                 text-align: center;
 
                 .user-bar__avatar {
+                    a {
+                        display: block;
+                    }
+
                     img {
                         width: $avatarLarge;
                         height: $avatarLarge;
@@ -292,11 +308,26 @@ h6 {
                 grid-template-columns: 50% 50%;
                 padding: 5px;
 
-                a {
+                button {
+                    padding: 0;
+                    border: 0;
+                    background-color: $secondaryBackground;
+                    cursor: pointer;
+
+                    &:focus {
+                        background-color: $secondaryBackground;
+                        outline: none;
+                        border: 0;
+                    }
+                }
+
+                a,
+                button {
                     width: 100%;
 
                     .material-icons {
                         background: $inputBackground;
+                        color: white;
                         border-radius: 5px;
                         display: block;
                         height: 32px;
@@ -314,6 +345,10 @@ h6 {
                         }
                     }
                 }
+
+                #toggleMenu {
+                    display: none;
+                }
             }
         }
 
@@ -323,6 +358,7 @@ h6 {
                     input {
                         width: 100%;
                         background-color: $primaryBackground;
+                        padding: 10px 12px;
                     }
                 }
             }
@@ -385,6 +421,7 @@ h6 {
 
     .content {
         width: calc(100% - $sidebarWidth);
+        min-height: calc(100vh - 60px);
         margin-left: $sidebarWidth;
         padding: $paddingExtraLarge;
         overflow-y: auto;
@@ -790,15 +827,19 @@ h6 {
 
 // server stats
 .server-stats {
-    display: grid;
-    grid-template-columns: 620px auto;
+    .server-stats__map,
+    .server-stats__content {
+        display: inline-block;
+        vertical-align: middle;
+    }
 
     .server-stats__map {
         img {
-            width: 600px;
-            height: 400px;
+            max-width: 100%;
+            max-height: 400px;
             object-fit: cover;
             border-radius: $borderRadius;
+            margin-right: $paddingSmall;
         }
     }
 
@@ -835,6 +876,11 @@ h6 {
 }
 
 // table
+.table-wrapper {
+    position: relative;
+    overflow-x: scroll;
+}
+
 .table {
     width: 100%;
     border-spacing: 0;
@@ -905,11 +951,7 @@ h6 {
             }
     
             .statistics__values {
-                padding: 5px;
-                position: absolute;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
+                margin-right: 15px;
 
                 .statistics__title {
                     color: $white;
@@ -1103,5 +1145,254 @@ pre {
                 font-size: 18px;
             }
         }
+    }
+}
+
+// staff logs
+.staff-logs {
+    .staff-logs__date {
+        color: #8b8bc7;
+    }
+}
+
+// toast
+.toast {
+    background-color: $inputBackground;
+    border-radius: $borderRadius;
+    box-shadow: $boxShadow;
+    padding: 20px 25px;
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    border-left: 4px solid $primaryColor;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+
+    .toast-content {
+        display: flex;
+        align-items: center;
+
+        .material-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            width: 35px;
+            background-color: $primaryColor;
+            color: $white;
+            border-radius: 50%;
+        }
+
+        .message {
+            display: flex;
+            flex-direction: column;
+            margin: 0 15px;
+
+            .text {
+                font-size: 14px;
+                font-weight: 400;
+                color: $textColor;
+
+                &.text-1 {
+                    font-weight: 600;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: #43436b;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $primaryColor;
+        }
+    }
+
+    &.fail {
+        border-left-color: $red;
+
+        .toast-content {
+            .material-icons {
+                background-color: $red;
+            }
+        }
+
+        .progress {
+            &::before {
+                background-color: $red;
+            }
+        }
+    }
+
+    &.active {
+        transform: translateX(0%);
+
+        .progress {
+            &::before {
+                animation: progress 5s linear forwards;
+            }
+        }
+    }
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
+
+// pagination
+.pagination {
+    margin: $paddingExtraLarge 0;
+
+    .previous,
+    .pages,
+    .next {
+        display: inline-block;
+    }
+
+    a {
+        vertical-align: middle;
+    }
+
+    .pages {
+        margin: 0 5px;
+
+        a,
+        span {
+            display: inline-block;
+            background-color: $inputBackground;
+            border-radius: $borderRadius;
+            padding: 5px 10px;
+            margin: 0 3px;
+        }
+
+        span[aria-current="page"],
+        a:hover {
+            background-color: $primaryColor;
+            color: $white;
+        }
+    }
+}
+
+// footer
+.footer {
+    background-color: $footerBackground;
+    width: calc(100% - 270px);
+    margin-left: 270px;
+    padding: $paddingMedium;
+    text-align: center;
+
+    .copyright {
+        p {
+            margin: 0;
+        }
+
+        .material-icons {
+            font-size: 18px;
+        }
+    }
+}
+
+// responsive
+@media screen and (max-width: 1500px) {
+    .grid-4 {
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+
+    .statistics {
+        .statistics__content .statistics__single {
+            margin-bottom: $paddingSmall;
+        }
+    }
+}
+
+@media screen and (max-width: 998px) {
+    .grid,
+    .tabs {
+        grid-template-columns: 100%;
+    }
+
+    .tabs {
+        .tabs__menu {
+            margin-bottom: $paddingExtraLarge;
+        }
+    }
+
+    .layout {
+        .sidebar,
+        .content {
+            width: 100%;
+        }
+
+        .sidebar {
+            position: relative;
+
+            .user-bar {
+                .user-bar__content {
+                    .user-bar__avatar,
+                    .user-bar__name {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    .user-bar__avatar {
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 5px;
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    .user-bar__controls {
+                        grid-template-columns: 33% 33% 33%;
+
+                        #toggleMenu {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            .navigation {
+                display: none;
+            }
+        }
+
+        .content {
+            margin-left: 0;
+        }
+    }
+
+    .statistics {
+        .statistics__content .statistics__single {
+            margin-bottom: $paddingSmall;
+
+            .statistics__values {
+                .statistics__value {
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .block {
+        margin: 15px 0;
     }
 }

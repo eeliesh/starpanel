@@ -53,6 +53,7 @@ Route::prefix('owner')->middleware('owner')->group(function () {
         Route::post('/edit/{id}', [OwnerAdminsController::class, 'update'])->name('owner.admins.update');
         Route::get('/add', [OwnerAdminsController::class, 'add'])->name('owner.admins.add');
         Route::post('/', [OwnerAdminsController::class, 'store'])->name('owner.admins.store');
+        Route::delete('/delete/{id}', [OwnerAdminsController::class, 'delete'])->name('owner.admins.delete');
     });
 
     Route::prefix('players')->group(function () {
@@ -69,4 +70,11 @@ Route::prefix('owner')->middleware('owner')->group(function () {
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+});
+
+Route::get('optimize', function () {
+    \Illuminate\Support\Facades\Artisan::call('optimize');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:cache');
 });

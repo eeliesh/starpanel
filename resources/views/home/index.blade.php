@@ -83,22 +83,20 @@
         <div class="block">
             <h2 class="heading"><span class="material-icons">history</span> Staff logs</h2>
             <ul class="staff-logs list-reset">
-                <li>
-                    <span class="staff-logs__date">
-                        [2022-01-01 00:00:00]
-                    </span>
-                    <span class="staff-logs__text">
-                        <strong>Valentin T.</strong> changed <strong>Test</strong>'s rank to <strong>Good</strong>.
-                    </span>
-                </li>
-                <li>
-                    <span class="staff-logs__date">
-                        [2022-01-01 00:00:00]
-                    </span>
-                    <span class="staff-logs__text">
-                        <strong>Valentin T.</strong> changed <strong>Test</strong>'s rank to <strong>Maresal</strong>.
-                    </span>
-                </li>
+                @if (!empty($staff_logs))
+                    @foreach ($staff_logs as $log)
+                        <li>
+                            <span class="staff-logs__date">
+                                {{ '[' . $log->created_at . ']' }}
+                            </span>
+                            <span class="staff-logs__text">
+                                {{ $log->message }}
+                            </span>
+                        </li>
+                    @endforeach
+                @else
+                    <li>No logs.</li>
+                @endif
             </ul>
         </div>
     </div>

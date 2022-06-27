@@ -12,7 +12,7 @@ class PlayersController extends Controller
     public function index()
     {
         return view('owner.players.index')->with([
-            'players' => User::all()
+            'players' => User::paginate(25)
         ]);
     }
 }

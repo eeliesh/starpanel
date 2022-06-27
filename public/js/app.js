@@ -50,6 +50,23 @@ $(document).ready(function () {
       }
     });
   });
+  var toast = $(".toast");
+
+  if (toast.length) {
+    toast.addClass("active");
+    setTimeout(function () {
+      toast.remove();
+    }, 5000);
+  }
+
+  var nav = $('.navigation');
+  $('#toggleMenu').on('click', function () {
+    if (nav.css('display') == 'block') {
+      nav.hide();
+    } else {
+      nav.show();
+    }
+  });
 });
 
 /***/ }),

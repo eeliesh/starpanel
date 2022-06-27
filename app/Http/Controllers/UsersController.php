@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function players()
     {
         return view('users.players', [
-            'players' => User::all(),
+            'players' => User::paginate(25),
         ]);
     }
 

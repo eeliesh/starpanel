@@ -46,5 +46,22 @@ $(document).ready(function() {
             }
         })    
     });
+
+    const toast = $(".toast");
+    if (toast.length) {
+        toast.addClass("active");
+        setTimeout(function () {
+            toast.remove();
+        }, 5000);
+    }
+
+    const nav = $('.navigation');
+    $('#toggleMenu').on('click', function() {
+        if (nav.css('display') == 'block') {
+            nav.hide();
+        } else {
+            nav.show();
+        }
+    });
 });
 

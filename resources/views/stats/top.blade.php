@@ -29,7 +29,11 @@
                                 <span class="material-icons blue">star</span>
                             @endif
                         </td>
-                        <td>{{ $player->name }}</td>
+                        <td>
+                            <a href="{{ route('users.profile', ['id' => $player->id]) }}">
+                                {{ $player->name }}
+                            </a>
+                        </td>
                         <td>{{ $player->kills }}</td>
                         <td>{{ $player->deaths }}</td>
                         <td>{{ $player->headshots }}</td>

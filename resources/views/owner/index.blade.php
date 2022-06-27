@@ -76,7 +76,7 @@
                         <div class="w-fit">
                             <div class="btn-group primary">
                                 <div class="btn-bg"></div>
-                                <button type="button" name="submit_command" class="btn btn-md"><span class="material-icons">done</span> Submit</button>
+                                <button type="submit" name="submit_command" class="btn btn-md"><span class="material-icons">done</span> Submit</button>
                             </div>
                         </div>
                     </div>
