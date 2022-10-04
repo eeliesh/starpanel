@@ -10,3 +10,4 @@ Control panel for a Counter-Strike 1.6 gaming server
 For owners:
 - Send any rcon commands directly to the server
 - Add/remove admins from the admin panel
+- See server statistics in the admin panel
